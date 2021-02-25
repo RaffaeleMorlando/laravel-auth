@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Admin Panel</h1>
+        <h1>My Posts</h1>
 
         @if (Session::has('success'))
             <div class="alert alert-success">
@@ -21,8 +21,8 @@
                     <th class="text-capitalize" style="width: 300px;">preview text</th>
                     <th class="text-capitalize">created</th>
                     <th class="text-capitalize">updated</th>
-                    <th class="text-capitalize" colspan="2"></th>
-                    <th class="text-capitalize" colspan="2"></th>
+                    <th class="text-capitalize" colspan="2">Actions</th>
+                    {{-- <th class="text-capitalize" colspan="2"></th> --}}
                 </tr>
             </thead>
             <tbody>
