@@ -15,9 +15,9 @@ class PostController extends Controller
         return view('guest.posts.index', compact('posts'));
     }
 
-    public function show(Post $post) 
+    public function show($id) 
     {
-        dump($post);
+        $post = Post::find($id)->first();
 
         return view('guest.posts.show', compact('post'));
     }

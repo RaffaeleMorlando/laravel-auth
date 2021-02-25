@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/posts', 'PostController@index')->name('posts.index');
-// Route::get('/posts/{id}', 'PostController@show')->name('posts.show');
+Route::get('/posts/{id}', 'PostController@show')->name('posts.show');
 
 Route::prefix('admin')
     ->namespace('Admin')
