@@ -21,6 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/posts', 'PostController@index')->name('posts');
+Route::get('/post/{id}', 'PostController@show')->name('post');
 
 Route::prefix('admin')
     ->namespace('Admin')
@@ -32,7 +34,6 @@ Route::prefix('admin')
     }
 );
 
-//Route::get('posts', 'PostController@index'); // show blog page
 
 
 
