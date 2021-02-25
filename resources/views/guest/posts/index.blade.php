@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$post->user->name}}</h5>
                     <p class="card-text">{{substr($post->body_content,0,300).'...'}}</p>
-                    <a href="{{route('post',$post->id)}}" class="btn btn-primary">Read</a>
+                    <a href="{{route('posts.show',$post->id)}}" class="btn btn-primary">Read</a>
                 </div>
             </div>  
         @endforeach
