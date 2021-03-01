@@ -68,7 +68,7 @@ class PostController extends Controller
 
         return redirect()
             ->route('admin.posts.index')
-            ->with('message', $newPost->title.'created successfully');
+            ->with('message','Post: '.$newPost->title.' created successfully');
     }
 
     /**
@@ -90,7 +90,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -100,9 +102,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        
+        $data = $request->all();
+
+        $request->validate($this->postValidation);
+
+        $data['user_id'] = Auth::id();
+        $data['image'] = Storage::disk('public')->put('images', $data['image']);
+        $data['slug'] = Str::slug($data['title']);
+        $post->update($data);
+
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('edited', 'Post '.$post->title.' edited successfully');
+
     }
 
     /**
@@ -113,6 +128,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('deleted', 'Post '.$post->title.' deleted successfully');
     }
 }

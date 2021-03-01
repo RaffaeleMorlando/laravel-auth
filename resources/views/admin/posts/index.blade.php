@@ -4,10 +4,22 @@
     <div class="container">
         <h1>My Posts</h1>
 
-        @if (session('success'))
+        @if (session('message'))
             <div class="alert alert-success">
                 <ul>
-                    <li>{{ session('success') }}</li>
+                    <li>{{ session('message') }}</li>
+                </ul>
+            </div>
+        @elseif (session('edited'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{{ session('edited') }}</li>
+                </ul>
+            </div>
+        @elseif (session('deleted'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{{ session('deleted') }}</li>
                 </ul>
             </div>
         @endif
@@ -23,7 +35,6 @@
                     <th class="text-capitalize">created</th>
                     <th class="text-capitalize">updated</th>
                     <th class="text-capitalize" colspan="2">Actions</th>
-                    {{-- <th class="text-capitalize" colspan="2"></th> --}}
                 </tr>
             </thead>
             <tbody>

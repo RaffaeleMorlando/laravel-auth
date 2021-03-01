@@ -4,6 +4,8 @@
 
     <div class="container">
 
+        <h1 class="border-bottom mb-3">Create new post</h1>
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
