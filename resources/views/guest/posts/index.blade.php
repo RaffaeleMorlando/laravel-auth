@@ -8,7 +8,8 @@
                     <h2>{{$post->title}}</h2>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{$post->user->name}}</h5>
+                    <img src="{{asset('storage/'.$post->image)}}" alt="" style="width: 300px">
+                    <h5 class="card-title my-4">{{$post->user->name}}</h5>
                     <p class="card-text">{{substr($post->body_content,0,300).'...'}}</p>
                     <p>{{Carbon\Carbon::parse($post->created_at)->diffForHumans()}}</p>
                     <a href="{{route('posts.show',$post->id)}}" class="btn btn-primary">Read</a>
