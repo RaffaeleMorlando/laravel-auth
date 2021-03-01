@@ -18,6 +18,7 @@
                     <th class="text-capitalize">id</th>
                     <th class="text-capitalize">title</th>
                     <th class="text-capitalize">author</th>
+                    <th class="text-capitalize">preview image</th>
                     <th class="text-capitalize" style="width: 300px;">preview text</th>
                     <th class="text-capitalize">created</th>
                     <th class="text-capitalize">updated</th>
@@ -31,6 +32,7 @@
                         <td>{{  $post->id  }}</td>
                         <td><a href="{{ route('admin.posts.show', $post->id) }}">{{  $post->title  }}</a></td>
                         <td>{{  $post->user->name  }}</td>
+                        <td><img src="{{asset('storage/'.$post->image)}}" alt="" style="width: 100px;"></td>
                         <td>{{  substr($post->body_content,0,50).'...'  }}</td>
                         <td>{{  $post->created_at  }}</td>
                         <td>{{  $post->updated_at  }}</td>

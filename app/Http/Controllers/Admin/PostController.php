@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 use App\Post;
+use App\Mail\PostMail;
 
 class PostController extends Controller
 {
@@ -61,6 +63,8 @@ class PostController extends Controller
         $data['slug'] = Str::slug($data['title']);
         $newPost->fill($data);
         $newPost->save();
+
+        Mail::to('blog-supervisor@blog.com')->send(new PostMail($newPost));
 
         return redirect()
             ->route('admin.posts.index')
