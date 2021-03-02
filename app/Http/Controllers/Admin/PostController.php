@@ -108,10 +108,17 @@ class PostController extends Controller
         $data = $request->all();
 
         $request->validate($this->postValidation);
-
         $data['user_id'] = Auth::id();
-        $data['image'] = Storage::disk('public')->put('images', $data['image']);
         $data['slug'] = Str::slug($data['title']);
+
+        if(!empty($data['image'])) {
+            if(!empty($post->image)) {
+                Storage::disk('public')->delete($post->image);
+            }
+
+            $data['image'] = Storage::disk('public')->put('images', $data['image']);
+        }
+
         $post->update($data);
 
         return redirect()
